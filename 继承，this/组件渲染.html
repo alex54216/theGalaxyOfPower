@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hhh{
+            width: 100px;
+            height: 100px;
+            border:1px solid #ccc;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="zl">
+        <div></div>
+        <com1></com1>
+        <userlogin></userlogin>
+    </div>
+   
+    <script>
+        function render(options){
+            let root = null;
+            // 对传入的节点进行校验
+            if(typeof options.root == 'string'){
+                root = document.querySelector(options.root)
+                if(!root){
+                    throw new Error(`找不到${options.root}`)
+                }
+            }else if(options.root instanceof HTMLElement){
+                root = options.root;
+            }else{
+                throw new Error('请传入符合规范的参数')
+            }
+            // 找出自定义元素
+            let elements = root.getElementsByTagName('*')
+            Array.from(elements).forEach(item => {
+                // console.log(elements)
+                for(let com in options.components){
+                    if(com.toUpperCase() == item.tagName.toUpperCase()){
+                        let cmpCls = options.components[com]
+                        let ren = new cmpCls()
+                        let res = ren.render()
+                        item.parentNode.replaceChild(res,item)
+                    }
+                }
+            })
+          
+        }
+        class Fa{
+            render(){
+                return `render is nodefied`
+            }
+        }
+        class com1 extends Fa{
+            render(){
+                let div1 = document.createElement('div')
+                div1.innerHTML = 'com1lalalalal.....'
+                return div1;
+            }
+        }
+        class userlogin extends Fa{
+            render(){
+                let div1 = document.createElement('div')
+                div1.className = 'hhh'
+                div1.innerHTML = 'com1lalalalal.....'
+                return div1;
+            }
+        }
+        render({
+            root:'#zl',
+            components:{
+                com1,userlogin
+            }
+        })
+    </script>
+</body>
+</html>

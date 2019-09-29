@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class staff{
+            constructor(name,age,money){
+                this.name = name;
+                this.age = age;
+                this.money = money;
+            }
+            showMoney(){
+                return this.money;
+            }
+        }    
+        class coder extends staff{
+            constructor(name,age,money,language){
+                super(name,age,money);
+                this.language = language;
+            }
+            showMoney(){
+                return super.showMoney()+200
+            }
+            showlanguage(){
+                return this.language;
+            }
+        }
+        // let zhangsan = new coder('zhangliang',18,10000,'js')
+        // console.log(zhangsan.showMoney())
+        // console.log(zhangsan.showlanguage())
+        class Design extends staff{
+            constructor(name,age,money,skill){
+                super(name,age,money)
+                this.skill = skill
+            }
+            // showlanguage(){
+            //     return super.showMoney()-100
+            // }
+        }
+        let arr = [
+            new coder('zl',18,1000,'js'),
+            new coder('zl',18,2000,'js'),
+            new coder('zl',18,3000,'js'),
+            new Design('zl',18,500,'js')
+        ]
+        let sum = 0;
+        // 多态，虽然都是调用了showMoney，但是执行的函数体并不一样。
+        arr.forEach((item)=>{
+            sum += item.showMoney()
+        })
+        console.log(sum);
+    </script>
+</body>
+</html>

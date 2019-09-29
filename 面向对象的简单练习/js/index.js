@@ -52,10 +52,12 @@ console.log(warp)
 let arr1 = [{
     title:'张三的歌',
     name:'张三',
+    isVIP:false,
     content:'lalalallalalalalalalalal我是自由盛开的花'
 },{
     title:'张三的歌',
     name:'张三',
+    isVIP:true,
     content:'找不到的三寸月光不去想天空透下云彩的光不去想约定了的天堂'
 }]
-let myList = new list(warp,'zlcastle','hhh')
+let myList = new list(warp,'zlcastle',arr1)

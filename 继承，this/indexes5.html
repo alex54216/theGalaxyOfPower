@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es5的继承
+        function A(name){
+            this.name = name
+        }
+        A.prototype.show = function(){
+            console.log(this.name)
+        }    
+        //b类继承A类
+        // 属性继承
+        function b(name,age){
+            A.call(this,name)
+            this.age = age 
+        }
+        // 方法继承
+        b.prototype = new A()
+        b.prototype.constructor = b
+        b.prototype.showAge = function(){
+            console.log(this.age)
+        }
+        //b的实例上有a的方法和属性
+        var b1 = new b('zlcastle',18);
+        b1.show()
+        b1.showAge()
+    </script>
+</body>
+</html>

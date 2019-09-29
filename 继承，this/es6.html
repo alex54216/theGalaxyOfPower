@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //es6 
+        class a{
+            constructor(name){
+                this.name = name
+            }
+            show(){
+                console.log(this.name);
+            }
+        }   
+        class b extends a{
+            constructor(name,age){
+                super(name)
+                this.age = age
+            }
+            show2(){
+                console.log(this.age)
+            }
+        }
+        let b1 = new b('zlcastle',20)
+        b1.show();
+        b1.show2();
+    </script>
+</body>
+</html>
